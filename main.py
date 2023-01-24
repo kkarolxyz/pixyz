@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from lib import epd4in2
+from lib import epd2in9
 from PIL import Image, ImageDraw,ImageFont
 from datetime import datetime
 import RPi.GPIO as GPIO
