@@ -41,7 +41,7 @@ class Weather:
     def __init__(self):
 
         self.fonts = Fonts(time_font_size = 75, date_font_size = 35, temperature_font_size = 50)
-        self.epd = epd4in2.EPD()
+        self.epd = epd2in9.EPD()
         self.epd.init()
     
     def primary_mode(self, start_mode = DISPLAY_MODE_WEATHER):
