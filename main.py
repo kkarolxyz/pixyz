@@ -15,10 +15,16 @@ RES_FONT = os.path.join(os.path.dirname(os.path.relpath(__file__)),'font/')
 RES_PIC = os.path.join(os.path.dirname(os.path.relpath(__file__)),'pic/')
 
 DATE_FORMAT = "%b %d %Y"
-TIME_FORMAT = ""
+TIME_FORMAT = "%H:%M"
+FONT = os.path.join(RES_FONT,'Roboto-Black.ttf')
 
-x = datetime(2022, 9, 15, 12, 45, 35)
-print(x.strftime("%b %d %Y %H:%M:%S"))
+
+#x = datetime(2022, 9, 15, 12, 45, 35)
+#print(x.strftime(DATE_FORMAT))
+
+class Fonts:
+    def __init__(self,temperature_font_size, time_font_size,date_font_size):
+        pass
 
 
 '''
