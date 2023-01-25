@@ -64,7 +64,9 @@ class Weather:
         Limage = Image.new('1', (self.epd.height, self.epd.width), 255) 
         draw = ImageDraw.Draw(Limage)
         draw.text((50, 10), timestring, font = self.fonts.time_font_size,align='center', fill = 0)
-        draw.text((50, 100), datestring, font = self.fonts.date_font_size, align='center', fill = 0)
+        draw.text((50, 105), datestring, font = self.fonts.date_font_size, align='center', fill = 0)
+        draw.line((0,100,500,100), width=2, fill=0)
+        draw.line((0,150,500,150), width=2, fill=0)
         self.epd.display(self.epd.getbuffer(Limage))
 
 
@@ -85,4 +87,3 @@ print(data.temperature)
 print(data.humidity)
 print(data.pressure)
 '''
-
