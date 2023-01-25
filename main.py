@@ -10,6 +10,7 @@ import smbus2
 import os
 import json
 import time
+import logging
 
 RES_FONT = os.path.join('font/','Roboto-Black.ttf')
 DATE_FORMAT = "%b %d %Y"
@@ -32,14 +33,12 @@ class Fonts:
 
         
 class Weather:
-    
     epd = None
     fonts = None
     mode = DISPLAY_MODE_WEATHER
     nobeldata = None
     
     def __init__(self):
-
         self.fonts = Fonts(time_font_size = 25, date_font_size = 25, temperature_font_size = 25)
         self.epd = epd2in9.EPD()
         self.epd.init()
@@ -48,19 +47,13 @@ class Weather:
         self.mode = start_mode
         while True:
             self.draw_clock()
-            self.clock_update()
-
-    def clock_update(self):
-        now = datetime.now()
-        seconds_until_next_minute = 60 - now.time().second
-        time.sleep(seconds_until_next_minute)
-    
 
     def draw_clock(self):
         datetime_now = datetime.now()
         datestring = datetime_now.strftime(DATE_FORMAT).capitalize()
         timestring = datetime_now.strftime(TIME_FORMAT)
-
+        
+        logging.info("1.Drawing the clock
         Limage = Image.new('1', (self.epd.height, self.epd.width), 255) 
         draw = ImageDraw.Draw(Limage)
         draw.text((0, 0), timestring, font = self.fonts.time_font_size,align='center', fill = 0)
@@ -74,14 +67,6 @@ if __name__ == '__main__':
     weather = Weather()
     weather.primary_mode(DISPLAY_MODE_WEATHER)
 '''
-port = 1 
-address = 0x77
-bus = smbus2.SMBus(port)
-
-calibration_params = bme280.load_calibration_params(bus, address)
-
-data = bme280.sample(bus,address,calibration_params)
-
 print(data.id)
 print(data.temperature)
 print(data.humidity)
