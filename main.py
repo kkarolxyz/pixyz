@@ -9,6 +9,7 @@ import bme280
 import smbus2
 import os
 import time
+import logging
 
 RES_FONT = os.path.join('font/','Roboto-Black.ttf')
 DATE_FORMAT = "%b %d %Y"
@@ -31,7 +32,6 @@ class Fonts:
 
         
 class Weather:
-    
     epd = None
     fonts = None
     mode = DISPLAY_MODE_WEATHER
